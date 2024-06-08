@@ -35,4 +35,4 @@
 現時点で未定（後ほど記載予定）
 
 ## 実装機能リスト
-https://docs.google.com/spreadsheets/d/1wclCuJVZL6r5uoesRxrWu9vuHb95KGmZloLzDI1USEU/edit?usp=sharing
+https://docs.google.com/spreadsheets/d/1zjAyf8STaYx8f38z4dpP1iaLgQEJsR_SmFz6zKxymMI/edit?usp=sharing
