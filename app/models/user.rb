@@ -13,6 +13,10 @@ class User < ApplicationRecord
     end
   end
 
+  def guest_user?
+    email == GUEST_USER_EMAIL
+  end
+
   has_one_attached :profile_image
 
   def get_profile_image(width, height)
