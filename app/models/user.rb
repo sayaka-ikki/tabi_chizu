@@ -4,6 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  validates :name, presence: true
+
+
   GUEST_USER_EMAIL = "guest@example.com"
 
   def self.guest
