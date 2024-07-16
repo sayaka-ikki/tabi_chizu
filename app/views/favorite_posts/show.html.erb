@@ -1,0 +1,11 @@
+<h1>お気に入りスポット詳細</h1>
+
+<div>
+  <%= image_tag @favorite_post.get_image %>
+  <p>スポット名：<%= @favorite_post.spot_name %></p>
+  <p>本文：<%= @favorite_post.body %></p>
+  <p>ユーザーネーム：<%= @favorite_post.user.name %></p>
+</div>
+
+
+

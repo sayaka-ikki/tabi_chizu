@@ -1,0 +1,2 @@
+module SchedulePostsHelper
+end

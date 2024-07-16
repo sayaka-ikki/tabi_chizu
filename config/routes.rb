@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:index,:edit, :show, :create, :update]
+  resources :favorite_posts, only:[:new, :create, :index, :show, :edit]
+  resources :schedule_posts, only:[:new, :index, :show, :edit]
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

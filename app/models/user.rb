@@ -21,6 +21,8 @@ class User < ApplicationRecord
   end
 
   has_one_attached :profile_image
+  has_many :favorite_posts, dependent: :destroy
+  has_many :schedule_posts, dependent: :destroy
 
   def get_profile_image(width, height)
     unless profile_image.attached?

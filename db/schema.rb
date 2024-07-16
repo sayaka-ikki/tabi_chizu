@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_06_25_121429) do
+ActiveRecord::Schema.define(version: 2024_07_16_135334) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -38,6 +38,36 @@ ActiveRecord::Schema.define(version: 2024_06_25_121429) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "favorite_posts", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "spot_name"
+    t.string "category"
+    t.text "body"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "schedule_posts", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "trip_title"
+    t.integer "latitude"
+    t.integer "longitude"
+    t.text "inventory_list"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "trip_itineraries", force: :cascade do |t|
+    t.integer "schedule_id"
+    t.string "spot_name"
+    t.datetime "date_time"
+    t.text "body"
+    t.integer "latitude"
+    t.integer "longitude"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
