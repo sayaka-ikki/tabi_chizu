@@ -1,2 +1,12 @@
-<h1>FavoritePosts#index</h1>
-<p>Find me in app/views/favorite_posts/index.html.erb</p>
+<h1>スポット投稿一覧</h1>
+
+<% @favorite_posts.each do |favorite_post| %>
+  <div>
+    <%= image_tag favorite_post.get_favorite_post_image(100, 100) %>
+    <p>スポット名：<strong><%= link_to favorite_post.spot_name, favorite_post_path(favorite_post.id) %></strong>
+      カテゴリ：<strong><%= favorite_post.category %></strong></p>
+      <p>本文：<strong><span> <%= favorite_post.body %></span></strong></p>
+      <p>投稿ユーザー：<strong><%= favorite_post.user.name %></strong></p>
+     <% end %>
+  </div>
+

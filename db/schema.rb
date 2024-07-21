@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_07_16_135334) do
+ActiveRecord::Schema.define(version: 2024_07_21_160153) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -60,7 +60,6 @@ ActiveRecord::Schema.define(version: 2024_07_16_135334) do
   end
 
   create_table "trip_itineraries", force: :cascade do |t|
-    t.integer "schedule_id"
     t.string "spot_name"
     t.datetime "date_time"
     t.text "body"
@@ -68,6 +67,7 @@ ActiveRecord::Schema.define(version: 2024_07_16_135334) do
     t.integer "longitude"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "schedule_post_id"
   end
 
   create_table "users", force: :cascade do |t|

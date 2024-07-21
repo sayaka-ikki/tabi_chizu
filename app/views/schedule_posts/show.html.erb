@@ -1,2 +1,16 @@
-<h1>SchedulePosts#show</h1>
-<p>Find me in app/views/schedule_posts/show.html.erb</p>
+<h1>スケジュール詳細</h1>
+
+<div>
+  <%= image_tag @schedule_post.get_schedule_post_image(100, 100) %>
+  <p>旅のタイトル：<%= @schedule_post.trip_title %></p>
+  <p>緯度：<%= @schedule_post.latitude %></p>
+  <p>経度：<%= @schedule_post.longitude %></p>
+  <p>持ち物リスト：<%= @schedule_post.inventory_list %></p>
+  <p>ユーザーネーム：<%= @schedule_post.user.name %></p>
+</div>
+
+  <% if current_user == @schedule_post.user %>
+    <%= link_to "編集",edit_schedule_post_path(@schedule_post.id) %>
+    <%= link_to "削除",schedule_post_path(@schedule_post), method: :delete %>
+  <% end %>
+

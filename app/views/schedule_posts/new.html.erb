@@ -1,2 +1,15 @@
-<h1>SchedulePosts#new</h1>
-<p>Find me in app/views/schedule_posts/new.html.erb</p>
+<h1>スケジュールを新規作成</h1>
+
+<%= form_with model: @schedule_post do |f| %>
+  <h4>旅のタイトル</h4>
+  <%= f.text_field :trip_title %>
+  <h4>緯度</h4>
+  <%= f.text_field :latitude %>
+  <h4>経度</h4>
+  <%= f.text_field :longitude %>
+  <h4>持ち物リスト</h4>
+  <%= f.text_area :inventory_list %>
+  <h4>画像</h4>
+  <%= f.file_field :schedule_post_image, accept: "image/*" %>
+  <br><%= f.submit '投稿' %>
+<% end %>
