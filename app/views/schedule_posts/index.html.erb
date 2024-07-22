@@ -1,2 +1,13 @@
-<h1>SchedulePosts#index</h1>
-<p>Find me in app/views/schedule_posts/index.html.erb</p>
+<h1>スケジュール投稿一覧</h1>
+
+<% @schedule_posts.each do |schedule_post| %>
+  <div>
+    <%= image_tag schedule_post.get_schedule_post_image(100, 100) %>
+    <p>旅のタイトル：<strong><%= link_to schedule_post.trip_title, schedule_post_path(schedule_post.id) %></strong>
+      緯度：<strong><%= schedule_post.latitude %></strong></p>
+      経度：<strong><%= schedule_post.longitude %></strong></p>
+      <p>本文：<strong><span> <%= schedule_post.inventory_list %></span></strong></p>
+      <p>ユーザーネーム：<strong><%= schedule_post.user.name %></strong></p>
+     <% end %>
+  </div>
+

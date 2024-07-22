@@ -11,7 +11,7 @@ class SchedulePostsController < ApplicationController
   end
 
   def index
-    @favorite_posts = FavoritePost.page(params[:page])
+    @schedule_posts = SchedulePost.page(params[:id])
   end
 
   def show
