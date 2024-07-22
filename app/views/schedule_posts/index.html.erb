@@ -6,7 +6,7 @@
     <p>旅のタイトル：<strong><%= link_to schedule_post.trip_title, schedule_post_path(schedule_post.id) %></strong>
       緯度：<strong><%= schedule_post.latitude %></strong></p>
       経度：<strong><%= schedule_post.longitude %></strong></p>
-      <p>本文：<strong><span> <%= schedule_post.inventory_list %></span></strong></p>
+      <p>持ち物リスト：<strong><span> <%= schedule_post.inventory_list %></span></strong></p>
       <p>ユーザーネーム：<strong><%= schedule_post.user.name %></strong></p>
      <% end %>
   </div>
