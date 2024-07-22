@@ -1,6 +1,7 @@
 class SchedulePostsController < ApplicationController
   def new
     @schedule_post = SchedulePost.new
+    @schedule_post.trip_itineraries.build
   end
 
   def create
@@ -16,6 +17,7 @@ class SchedulePostsController < ApplicationController
 
   def show
     @schedule_post = SchedulePost.find(params[:id])
+    @schedule_post.trip_itineraries
   end
 
   def edit
@@ -41,7 +43,7 @@ class SchedulePostsController < ApplicationController
   private
 
   def schedule_post_params
-    params.require(:schedule_post).permit(:trip_title, :latitude, :longitude, :inventory_list, :schedule_post_image)
+    params.require(:schedule_post).permit(:trip_title, :latitude, :longitude, :inventory_list, :schedule_post_image, trip_itineraries_attributes: [:spot_name,:date_time,:body])
   end
 
 end

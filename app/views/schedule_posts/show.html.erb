@@ -7,7 +7,11 @@
   <p>経度：<%= @schedule_post.longitude %></p>
   <p>持ち物リスト：<%= @schedule_post.inventory_list %></p>
   <p>ユーザーネーム：<%= @schedule_post.user.name %></p>
+  <% @schedule_post.trip_itineraries.each do |trip_itinerary| %>
+    <p><%= trip_itinerary.spot_name %></p>
+  <% end %>
 </div>
+
 
   <% if current_user == @schedule_post.user %>
     <%= link_to "編集",edit_schedule_post_path(@schedule_post.id) %>
