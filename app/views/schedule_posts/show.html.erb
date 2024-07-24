@@ -7,14 +7,15 @@
   <p>経度：<%= @schedule_post.longitude %></p>
   <p>持ち物リスト：<%= @schedule_post.inventory_list %></p>
   <p>ユーザーネーム：<%= @schedule_post.user.name %></p>
-  <% @schedule_post.trip_itineraries.each do |trip_itinerary| %>
-    <p><%= trip_itinerary.spot_name %></p>
+
+  <% @trip_itineraries.each do |itinerary| %>
+    <p>訪問先名：<%= itinerary.spot_name %></p>
+    <p>日時：<%= itinerary.date_time %></p>
+    <p>メモ：<%= itinerary.body %></p>
   <% end %>
 </div>
 
-
-  <% if current_user == @schedule_post.user %>
-    <%= link_to "編集",edit_schedule_post_path(@schedule_post.id) %>
-    <%= link_to "削除",schedule_post_path(@schedule_post), method: :delete %>
-  <% end %>
-
+<% if current_user == @schedule_post.user %>
+  <%= link_to "編集", edit_schedule_post_path(@schedule_post.id) %>
+  <%= link_to "削除", schedule_post_path(@schedule_post), method: :delete %>
+<% end %>

@@ -1,6 +1,7 @@
 class SchedulePost < ApplicationRecord
   belongs_to :user
   has_many :trip_itineraries, dependent: :destroy
+  accepts_nested_attributes_for :trip_itineraries
 
   has_one_attached :schedule_post_image
 

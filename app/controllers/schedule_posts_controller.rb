@@ -17,7 +17,7 @@ class SchedulePostsController < ApplicationController
 
   def show
     @schedule_post = SchedulePost.find(params[:id])
-    @schedule_post.trip_itineraries
+    @trip_itineraries = @schedule_post.trip_itineraries
   end
 
   def edit
