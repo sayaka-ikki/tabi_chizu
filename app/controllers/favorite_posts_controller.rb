@@ -12,7 +12,7 @@ class FavoritePostsController < ApplicationController
 
 
   def index
-    @favorite_posts = FavoritePost.page(params[:page])
+    @favorite_posts = FavoritePost.order(created_at: :desc).page(params[:page]).per(10)
   end
 
 

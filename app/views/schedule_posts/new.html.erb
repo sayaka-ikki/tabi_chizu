@@ -15,14 +15,20 @@
   <div>
     <%= f.fields_for :trip_itineraries do |trip_itinerary_form| %>
 
-      <%= trip_itinerary_form.label :spot_name, "スポット名" %>
+      <%= trip_itinerary_form.label :spot_name, "訪問先名" %>
       <%= trip_itinerary_form.text_field :spot_name %>
 
       <%= trip_itinerary_form.label :date_time, "日時" %>
       <%= trip_itinerary_form.text_field :date_time %>
 
-      <%= trip_itinerary_form.label :body, "本文" %>
+      <%= trip_itinerary_form.label :body, "メモ" %>
       <%= trip_itinerary_form.text_area :body %>
+
+      <%= trip_itinerary_form.label :latitude, "緯度" %>
+      <%= trip_itinerary_form.text_field :latitude %>
+
+      <%= trip_itinerary_form.label :longitude, "経度" %>
+      <%= trip_itinerary_form.text_field :longitude %>
 
     <% end %>
   </div>

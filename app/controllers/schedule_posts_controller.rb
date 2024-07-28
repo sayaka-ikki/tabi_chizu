@@ -12,7 +12,7 @@ class SchedulePostsController < ApplicationController
   end
 
   def index
-    @schedule_posts = SchedulePost.page(params[:id])
+    @schedule_posts = SchedulePost.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def show
@@ -22,6 +22,7 @@ class SchedulePostsController < ApplicationController
 
   def edit
      @schedule_post = SchedulePost.find(params[:id])
+     @trip_itineraries = @schedule_post.trip_itineraries
   end
 
   def update

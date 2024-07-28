@@ -1,3 +1,24 @@
 <h1>たび＆ちず</h1>
 <h2>～旅人のための地図作り～</h2>
-<p>たび＆ちずでできること。･･････････<br>････････････････<br>･･･････････････････</p>
+<p>たび＆ちずでできること。</p>
+
+<h4>最新のお気に入りスポット投稿</h4>
+<% @favorite_posts.each do |favorite_post| %>
+  <div>
+    <%= image_tag favorite_post.get_favorite_post_image(100, 100) %>
+    <p>スポット名：<strong><%= link_to favorite_post.spot_name, favorite_post_path(favorite_post.id) %></strong>
+      カテゴリ：<strong><%= favorite_post.category %></strong></p>
+      <p>本文：<strong><span> <%= favorite_post.body %></span></strong></p>
+      <p>投稿ユーザー：<strong><%= favorite_post.user.name %></strong></p>
+     <% end %>
+  </div>
+
+
+<h4>最新のスケジュール投稿</h4>
+<% @schedule_posts.each do |schedule_post| %>
+  <div>
+    <%= image_tag schedule_post.get_schedule_post_image(100, 100) %>
+    <p>旅のタイトル：<strong><%= link_to schedule_post.trip_title, schedule_post_path(schedule_post.id) %></strong></p>
+    <p>ユーザーネーム：<strong><%= schedule_post.user.name %></strong></p>
+  </div>
+<% end %>

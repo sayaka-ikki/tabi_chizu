@@ -1,13 +1,22 @@
 <h1>スケジュール投稿一覧</h1>
 
-<% @schedule_posts.each do |schedule_post| %>
-  <div>
+<div>
+  <% @schedule_posts.each do |schedule_post| %>
     <%= image_tag schedule_post.get_schedule_post_image(100, 100) %>
     <p>旅のタイトル：<strong><%= link_to schedule_post.trip_title, schedule_post_path(schedule_post.id) %></strong></p>
-      <p>緯度：<strong><%= schedule_post.latitude %></strong></p>
-      <p>経度：<strong><%= schedule_post.longitude %></strong></p>
-      <p>持ち物リスト：<strong><span> <%= schedule_post.inventory_list %></span></strong></p>
-      <p>ユーザーネーム：<strong><%= schedule_post.user.name %></strong></p>
-     <% end %>
-  </div>
+    <p>緯度：<strong><%= schedule_post.latitude %></strong></p>
+    <p>経度：<strong><%= schedule_post.longitude %></strong></p>
 
+    <div>
+      <% schedule_post.trip_itineraries.each do |itinerary| %>
+        <p>訪問先名：<%= itinerary.spot_name %></p>
+        <p>日時：<%= itinerary.date_time %></p>
+        <p>メモ：<%= itinerary.body %></p>
+      <% end %>
+    </div>
+
+    <p>持ち物リスト：<strong><span> <%= schedule_post.inventory_list %></span></strong></p>
+    <p>ユーザーネーム：<strong><%= schedule_post.user.name %></strong></p>
+  <% end %>
+</div>
+<%= paginate @schedule_posts %>

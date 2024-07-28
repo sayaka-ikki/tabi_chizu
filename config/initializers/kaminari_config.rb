@@ -11,4 +11,8 @@ Kaminari.configure do |config|
   # config.param_name = :page
   # config.max_pages = nil
   # config.params_on_first_page = false
+  def to_s
+    to_html
+  end
+
 end
