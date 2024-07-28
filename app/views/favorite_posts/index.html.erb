@@ -7,6 +7,7 @@
       カテゴリ：<strong><%= favorite_post.category %></strong></p>
       <p>本文：<strong><span> <%= favorite_post.body %></span></strong></p>
       <p>投稿ユーザー：<strong><%= favorite_post.user.name %></strong></p>
+      <p><%= link_to "#{favorite_post.favorite_post_comments.count} コメント", favorite_post_path(favorite_post.id) %></p>
      <% end %>
   </div>
 <%= paginate @favorite_posts %>

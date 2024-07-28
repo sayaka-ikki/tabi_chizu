@@ -2,6 +2,7 @@ class FavoritePost < ApplicationRecord
   belongs_to :user
 
   has_one_attached :favorite_post_image
+  has_many :favorite_post_comments, dependent: :destroy
 
     def get_favorite_post_image(width, height)
       unless favorite_post_image.attached?

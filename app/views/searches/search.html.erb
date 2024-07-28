@@ -16,6 +16,7 @@
     <tbody>
       <% @favorite_posts.each do |favorite_post| %>
         <tr>
+          <td><%= image_tag favorite_post.get_favorite_post_image(100, 100) %></td>
           <td><%= link_to favorite_post.spot_name, favorite_post_path(favorite_post.id) %></td>
           <td><%= favorite_post.body %></td>
         </tr>

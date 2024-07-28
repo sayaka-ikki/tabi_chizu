@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   get "search" => "searches#search"
 
   resources :users, only: [:index,:edit, :show, :create, :update]
-  resources :favorite_posts, only:[:new, :create, :index, :show, :edit, :update, :destroy]
+  resources :favorite_posts, only:[:new, :create, :index, :show, :edit, :update, :destroy] do
+    resources :favorite_post_comments, only: [:create,:destroy]
+  end
   resources :schedule_posts, only:[:new, :create, :index, :show, :edit, :update, :destroy]
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

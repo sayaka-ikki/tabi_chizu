@@ -18,6 +18,7 @@ class FavoritePostsController < ApplicationController
 
   def show
     @favorite_post = FavoritePost.find(params[:id])
+    @favorite_post_comment = FavoritePostComment.new
   end
 
 

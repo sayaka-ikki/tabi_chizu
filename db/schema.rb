@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_07_21_160153) do
+ActiveRecord::Schema.define(version: 2024_07_28_100503) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -40,6 +40,14 @@ ActiveRecord::Schema.define(version: 2024_07_21_160153) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "favorite_post_comments", force: :cascade do |t|
+    t.integer "user_id"
+    t.text "favorite_post_comment_body"
+    t.integer "favorite_post_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "favorite_posts", force: :cascade do |t|
     t.integer "user_id"
     t.string "spot_name"
@@ -60,6 +68,7 @@ ActiveRecord::Schema.define(version: 2024_07_21_160153) do
   end
 
   create_table "trip_itineraries", force: :cascade do |t|
+    t.integer "schedule_post_id"
     t.string "spot_name"
     t.datetime "date_time"
     t.text "body"
@@ -67,7 +76,6 @@ ActiveRecord::Schema.define(version: 2024_07_21_160153) do
     t.integer "longitude"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "schedule_post_id"
   end
 
   create_table "users", force: :cascade do |t|

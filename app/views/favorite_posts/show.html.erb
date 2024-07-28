@@ -13,3 +13,20 @@
     <%= link_to "削除",favorite_post_path(@favorite_post), method: :delete %>
   <% end %>
 
+<div>
+  <p>コメント件数：<%= @favorite_post.favorite_post_comments.count %></p>
+  <% @favorite_post.favorite_post_comments.each do |favorite_post_comment| %>
+    <p><%= image_tag favorite_post_comment.user.get_profile_image(100,100) %></p>
+    <%= favorite_post_comment.user.name %>
+    <%= favorite_post_comment.created_at.strftime('%Y/%m/%d') %><%= favorite_post_comment.favorite_post_comment_body %>
+    <% if favorite_post_comment.user == current_user %>
+      <%= link_to "削除", favorite_post_favorite_post_comment_path(favorite_post_comment.favorite_post, favorite_post_comment), method: :delete %>
+    <% end %>
+  <% end %>
+</div>
+<div>
+  <%= form_with model: [@favorite_post, @favorite_post_comment] do |f| %>
+    <%= f.text_area :favorite_post_comment_body, rows: '5', placeholder: "コメントをここに" %>
+    <%= f.submit "送信する" %>
+  <% end %>
+</div>
