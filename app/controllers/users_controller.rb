@@ -34,6 +34,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def search
+    @range = params[:range]
+
+    if @range == "User"
+      @users = User.looks(params[:search], params[:word])
+    else
+      @favorite_posts = FavoritePost.looks(params[:search], params[:word])
+    end
+  end
+
   private
 
   def user_params

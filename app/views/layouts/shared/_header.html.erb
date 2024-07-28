@@ -1,0 +1,41 @@
+<header>
+    <div>
+    <ul style="list-style: none;">
+      <li>
+        <%= link_to 'TOPページへ', root_path %>
+      </li>
+    <% if user_signed_in? %>
+      <li>
+        <%= link_to 'お気に入りスポットを投稿！', new_favorite_post_path %>
+      </li>
+      <li>
+        <%= link_to 'お気に入りスポット一覧へ', favorite_posts_path %>
+      </li>
+      <li>
+        <%= link_to 'スケジュールを新規作成！', new_schedule_post_path %>
+      </li>
+      <li>
+        <%= link_to 'スケジュール一覧へ', schedule_posts_path %>
+      </li>
+      <li>
+        <%= link_to 'マイページ', user_path(current_user.id) %>
+      </li>
+      <li>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+      </li>
+
+    <% else %>
+      <li>
+        <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post %>
+      </li>
+      <li>
+        <%= link_to "新規登録", new_user_registration_path %>
+      </li>
+      <li>
+        <%= link_to "ログイン", new_user_session_path %>
+      </li>
+    </ul>
+    </div>
+    <% end %>
+    <%= render 'layouts/shared/search' %>
+    </header>

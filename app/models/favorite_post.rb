@@ -11,4 +11,19 @@ class FavoritePost < ApplicationRecord
       favorite_post_image.variant(resize_to_limit: [width, height]).processed
     end
 
+# 検索方法の分岐
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @favorite_post = FavoritePost.where("spot_name LIKE?","#{word}")
+    elsif search == "forward_match"
+      @favorite_post = FavoritePost.where("spot_name LIKE?","#{word}%")
+    elsif search == "backward_match"
+      @favorite_post = FavoritePost.where("spot_name LIKE?","%#{word}")
+    elsif search == "partial_match"
+      @favorite_post = FavoritePost.where("spot_name LIKE?","%#{word}%")
+    else
+      @favorite_post = FavoritePost.all
+    end
+  end
+
 end
