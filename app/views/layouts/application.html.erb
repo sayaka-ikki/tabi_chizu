@@ -13,12 +13,13 @@
 
   <body>
     <%= render 'layouts/shared/header' %>
-    
 
     <%# deivseのフラッシュメッセージを表示 %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
     <%= yield %>
+
+    <%= render 'layouts/shared/footer' %>
   </body>
 </html>
