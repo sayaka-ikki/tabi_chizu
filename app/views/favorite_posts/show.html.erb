@@ -1,32 +1,58 @@
-<h1>お気に入りスポット詳細</h1>
-
-<div>
-  <%= image_tag @favorite_post.get_favorite_post_image(100, 100) %>
-  <p>スポット名：<%= @favorite_post.spot_name %></p>
-  <p>カテゴリ：<%= @favorite_post.category %></p>
-  <p>本文：<%= @favorite_post.body %></p>
-  <p>ユーザーネーム：<%= @favorite_post.user.name %></p>
-</div>
-
-  <% if current_user == @favorite_post.user %>
-    <%= link_to "編集",edit_favorite_post_path(@favorite_post.id) %>
-    <%= link_to "削除",favorite_post_path(@favorite_post), method: :delete %>
-  <% end %>
-
-<div>
-  <p>コメント件数：<%= @favorite_post.favorite_post_comments.count %></p>
-  <% @favorite_post.favorite_post_comments.each do |favorite_post_comment| %>
-    <p><%= image_tag favorite_post_comment.user.get_profile_image(100,100) %></p>
-    <%= favorite_post_comment.user.name %>
-    <%= favorite_post_comment.created_at.strftime('%Y/%m/%d') %><%= favorite_post_comment.favorite_post_comment_body %>
-    <% if favorite_post_comment.user == current_user %>
-      <%= link_to "削除", favorite_post_favorite_post_comment_path(favorite_post_comment.favorite_post, favorite_post_comment), method: :delete %>
-    <% end %>
-  <% end %>
-</div>
-<div>
-  <%= form_with model: [@favorite_post, @favorite_post_comment] do |f| %>
-    <%= f.text_area :favorite_post_comment_body, rows: '5', placeholder: "コメントをここに" %>
-    <%= f.submit "送信する" %>
-  <% end %>
+<div class="d-flex justify-content-center">
+  <div class="col-6">
+    <h1 class="text-center mb-3">お気に入りスポット詳細</h1>
+    <div class="card mb-3">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-4">
+            <%= image_tag @favorite_post.get_favorite_post_image(200, 200), class: "mb-3" %>
+          </div>
+          <div class="col-8 d-flex flex-column align-items-start">
+            <label class="ml-3">スポット名：<%= @favorite_post.spot_name %></label>
+            <label class="ml-3">カテゴリ：<%= @favorite_post.category %></label>
+            <label class="ml-3 text-wrap">本文：<%= @favorite_post.body %></label>
+            <label class="ml-3">ユーザーネーム：<%= @favorite_post.user.name %></label>
+            <% if current_user == @favorite_post.user %>
+              <%= link_to "編集", edit_favorite_post_path(@favorite_post.id), class: "btn btn-primary mt-2" %>
+              <%= link_to "削除", favorite_post_path(@favorite_post), method: :delete, class: "btn btn-danger mt-2" %>
+            <% end %>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <label class="ml-3">コメント件数：<%= @favorite_post.favorite_post_comments.count %></label>
+            <% @favorite_post.favorite_post_comments.each do |favorite_post_comment| %>
+              <div class="card mt-2">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-4">
+                      <%= image_tag favorite_post_comment.user.get_profile_image(200,200), class: "mb-3" %>
+                    </div>
+                    <div class="col-8 d-flex flex-column align-items-start">
+                      <div class="card w-100">
+                        <div class="card-body text-wrap">
+                          <label class="ml-3 mb-5"><%= favorite_post_comment.favorite_post_comment_body %></label>
+                        </div>
+                      </div>
+                      <label class="ml-3">ユーザーネーム：<%= favorite_post_comment.user.name %></label>
+                      <label class="ml-3"><%= favorite_post_comment.created_at.strftime('%Y/%m/%d %H:%M') %></label>
+                      <% if favorite_post_comment.user == current_user %>
+                        <%= link_to "削除", favorite_post_favorite_post_comment_path(favorite_post_comment.favorite_post, favorite_post_comment), method: :delete, class: "btn btn-danger mt-2" %>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div>
+          <%= form_with model: [@favorite_post, @favorite_post_comment] do |f| %>
+            <%= f.text_area :favorite_post_comment_body, rows: '5', placeholder: "コメントをここに", class: "w-100" %>
+            <%= f.submit "送信する", class: "btn btn-primary mt-2" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

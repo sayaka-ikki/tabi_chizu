@@ -1,37 +1,61 @@
-<h1>スケジュールを新規作成</h1>
-
-<%= form_with model: @schedule_post do |f| %>
-  <h4>旅のタイトル</h4>
-  <%= f.text_field :trip_title %>
-  <h4>画像</h4>
-  <%= f.file_field :schedule_post_image, accept: "image/*" %>
-  <h4>緯度</h4>
-  <%= f.text_field :latitude %>
-  <h4>経度</h4>
-  <%= f.text_field :longitude %>
-  <h4>持ち物リスト</h4>
-  <%= f.text_area :inventory_list %>
-
-  <div>
-    <%= f.fields_for :trip_itineraries do |trip_itinerary_form| %>
-
-      <%= trip_itinerary_form.label :spot_name, "訪問先名" %>
-      <%= trip_itinerary_form.text_field :spot_name %>
-
-      <%= trip_itinerary_form.label :date_time, "日時" %>
-      <%= trip_itinerary_form.text_field :date_time %>
-
-      <%= trip_itinerary_form.label :body, "メモ" %>
-      <%= trip_itinerary_form.text_area :body %>
-
-      <%= trip_itinerary_form.label :latitude, "緯度" %>
-      <%= trip_itinerary_form.text_field :latitude %>
-
-      <%= trip_itinerary_form.label :longitude, "経度" %>
-      <%= trip_itinerary_form.text_field :longitude %>
-
-    <% end %>
+<div class="container">
+  <div class="text-center">
+    <h1>スケジュールを新規作成</h1>
   </div>
 
-  <br><%= f.submit '投稿' %>
-<% end %>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <%= form_with model: @schedule_post do |f| %>
+        <div class="form-group">
+          <%= f.label :trip_title, "旅のタイトル" %>
+          <%= f.text_field :trip_title, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :schedule_post_image, "画像" %>
+          <%= f.file_field :schedule_post_image, accept: "image/*", class: "form-control-file" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :latitude, "緯度" %>
+          <%= f.text_field :latitude, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :longitude, "経度" %>
+          <%= f.text_field :longitude, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :inventory_list, "持ち物リスト" %>
+          <%= f.text_area :inventory_list, class: "form-control" %>
+        </div>
+
+        <%= f.fields_for :trip_itineraries do |trip_itinerary_form| %>
+        <div class="card">
+          <div class="card-body">
+            <div class="form-group">
+              <%= trip_itinerary_form.label :spot_name, "訪問先名" %>
+              <%= trip_itinerary_form.text_field :spot_name, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= trip_itinerary_form.label :date_time, "日時" %>
+              <%= trip_itinerary_form.text_field :date_time, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= trip_itinerary_form.label :body, "メモ" %>
+              <%= trip_itinerary_form.text_area :body, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= trip_itinerary_form.label :latitude, "緯度" %>
+              <%= trip_itinerary_form.text_field :latitude, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= trip_itinerary_form.label :longitude, "経度" %>
+              <%= trip_itinerary_form.text_field :longitude, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+        <% end %>
+
+        <%= f.submit '投稿', class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>

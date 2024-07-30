@@ -1,49 +1,72 @@
-<h2>スケジュールの編集</h2>
+<div class="container">
+  <div class="text-center">
+    <h1>スケジュールの編集</h1>
+  </div>
 
-<% if @schedule_post.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@schedule_post.errors.count, "error") %> prohibited this schedule post from being saved:</h2>
-    <ul>
-      <% @schedule_post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+  <% if @schedule_post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@schedule_post.errors.count, "error") %> prohibited this schedule post from being saved:</h2>
+      <ul>
+        <% @schedule_post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <%= form_with model: @schedule_post do |f| %>
+        <div class="form-group">
+          <%= f.label :trip_title, "旅のタイトル", for: "inputTripTitle" %>
+          <%= f.text_field :trip_title, autofocus: true, id:"inputTripTitle", placeholder:"旅のタイトル", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :schedule_post_image, "画像", for: "inputShedulePostImage" %>
+          <%= f.file_field :schedule_post_image, placeholder: "画像", accept: "image/*", class: "form-control-file" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :inventory_list, "持ち物リスト", for: "inputInventoryList" %>
+          <%= f.text_area :inventory_list, autofocus: true, id:"inputInventoryList", placeholder:"持ち物リスト", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :latitude, "緯度", for: "inputLatitude" %>
+          <%= f.text_field :latitude, autofocus: true, id:"inputLatitude", placeholder:"緯度", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :longitude, "経度", for: "inputLongitude" %>
+          <%= f.text_field :longitude, autofocus: true, id:"inputLongitude", placeholder:"経度", class: "form-control" %>
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+            <%= f.fields_for :trip_itineraries do |trip_itinerary_form| %>
+              <div class="form-group">
+                <%= trip_itinerary_form.label :spot_name, "訪問先名", for: "inputSpotName" %>
+                <%= trip_itinerary_form.text_field :spot_name, id:"inputSpotName", class: "form-control" %>
+              </div>
+              <div class="form-group">
+                <%= trip_itinerary_form.label :date_time, "日時", for: "inputDateTime" %>
+                <%= trip_itinerary_form.text_field :date_time, id:"inputDateTime", class: "form-control" %>
+              </div>
+              <div class="form-group">
+                <%= trip_itinerary_form.label :body, "メモ", for: "inputBody" %>
+                <%= trip_itinerary_form.text_area :body, id:"inputBody", class: "form-control" %>
+              </div>
+              <div class="form-group">
+                <%= trip_itinerary_form.label :latitude, "緯度", for: "inputLatitude" %>
+                <%= trip_itinerary_form.text_field :latitude, id:"inputLatitude", class: "form-control" %>
+              </div>
+              <div class="form-group">
+                <%= trip_itinerary_form.label :longitude, "経度", for: "inputLongitude" %>
+                <%= trip_itinerary_form.text_field :longitude, id:"inputLongitude", class: "form-control" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+        <%= f.submit "変更を保存", class: "btn btn-primary" %>
       <% end %>
-    </ul>
+    </div>
   </div>
-<% end %>
-
-<%= form_with model: @schedule_post do |f| %>
-  <label for="inputTripTitle">旅のタイトル</label>
-  <%= f.text_field :trip_title, autofocus: true, id:"inputTripTitle", placeholder:"旅のタイトル" %>
-  <label for="inputShedulePostImage">画像</label>
-  <%= f.file_field :schedule_post_image, placeholder: "画像", accept: "image/*" %>
-  <label for="inputInventoryList">持ち物リスト</label>
-  <%= f.text_area :inventory_list, autofocus: true, id:"inputInventoryList", placeholder:"持ち物リスト" %>
-  <label for="inputLatitude">緯度</label>
-  <%= f.text_field :latitude, autofocus: true, id:"inputLatitude", placeholder:"緯度" %>
-  <label for="inputLongitude">経度</label>
-  <%= f.text_field :longitude, autofocus: true, id:"inputLongitude", placeholder:"経度" %>
-
-
-  <div>
-    <%= f.fields_for :trip_itineraries do |trip_itinerary_form| %>
-
-      <label for="inputSpotName">訪問先名</label>
-      <%= trip_itinerary_form.text_field :spot_name, id:"inputSpotName" %>
-
-      <label for="inputDateTime">日時</label>
-      <%= trip_itinerary_form.text_field :date_time, id:"inputDateTime" %>
-
-      <label for="inputBody">メモ</label>
-      <%= trip_itinerary_form.text_area :body, id:"inputBody" %>
-
-      <label for="inputLatitude">緯度</label>
-      <%= trip_itinerary_form.text_field :latitude, id:"inputLatitude" %>
-
-      <label for="inputLongitude">経度</label>
-      <%= trip_itinerary_form.text_field :longitude, id:"inputLongitude" %>
-
-    <% end %>
-  </div>
-
-  <%= f.submit "変更を保存" %>
-<% end %>
+</div>
