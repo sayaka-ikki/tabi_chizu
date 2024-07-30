@@ -3,8 +3,8 @@
 <% @favorite_posts.each do |favorite_post| %>
   <div>
     <%= image_tag favorite_post.get_favorite_post_image(100, 100) %>
-    <p>スポット名：<strong><%= link_to favorite_post.spot_name, favorite_post_path(favorite_post.id) %></strong>
-      カテゴリ：<strong><%= favorite_post.category %></strong></p>
+    <p>スポット名：<strong><%= link_to favorite_post.spot_name, favorite_post_path(favorite_post.id) %></strong></p>
+      <p>カテゴリ：<strong><%= favorite_post.category %></strong></p>
       <p>本文：<strong><span> <%= favorite_post.body %></span></strong></p>
       <p>投稿ユーザー：<strong><%= favorite_post.user.name %></strong></p>
       <p><%= link_to "#{favorite_post.favorite_post_comments.count} コメント", favorite_post_path(favorite_post.id) %></p>

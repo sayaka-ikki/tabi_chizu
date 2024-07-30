@@ -1,24 +1,50 @@
-<h1>たび＆ちず</h1>
-<h2>～旅人のための地図作り～</h2>
-<p>たび＆ちずでできること。</p>
-
-<h4>最新のお気に入りスポット投稿</h4>
-<% @favorite_posts.each do |favorite_post| %>
-  <div>
-    <%= image_tag favorite_post.get_favorite_post_image(100, 100) %>
-    <p>スポット名：<strong><%= link_to favorite_post.spot_name, favorite_post_path(favorite_post.id) %></strong>
-      カテゴリ：<strong><%= favorite_post.category %></strong></p>
-      <p>本文：<strong><span> <%= favorite_post.body %></span></strong></p>
-      <p>投稿ユーザー：<strong><%= favorite_post.user.name %></strong></p>
-     <% end %>
+<div class="container">
+  <div class="text-center">
+    <h1>たび＆ちず</h1>
+  </div>
+  <div class="text-center mb-4">
+    <h2>～旅人のための地図作り～</h2>
+  </div>
+  <div class="mb-5">
+    <p style="font-size: 15px;">..たび＆ちずでできること..</p>
+    <p>①お気に入りスポットを投稿することができます。行ってみたい場所を見つけたら投稿しておこう！</br>
+      ②旅行のスケジュールを作成することができます。</br>
+      ③全ユーザーが投稿したお気に入りスポットを検索することができるため、スケジュール作成に役立ちます。</br>
+      ④スケジュール作成時には訪問先を複数個登録できるため時間管理もラクラクです。</br>
+      ⑤訪問先を地図上で確認できるため、それぞれの訪問先の位置関係が一目瞭然！効率のいいスケジュール作成に役立ちます。</br>
+      ⑥スケジュールには持ち物リストを保存できるため、忘れ物を防止します。</p>
+      <p>さあ、みんなもお気に入りスポットを投稿してみよう！</p>
   </div>
 
-
-<h4>最新のスケジュール投稿</h4>
-<% @schedule_posts.each do |schedule_post| %>
-  <div>
-    <%= image_tag schedule_post.get_schedule_post_image(100, 100) %>
-    <p>旅のタイトル：<strong><%= link_to schedule_post.trip_title, schedule_post_path(schedule_post.id) %></strong></p>
-    <p>ユーザーネーム：<strong><%= schedule_post.user.name %></strong></p>
+  <div class="bg-light">
+    <div class="row p-4">
+      <h4 style="font-weight: bold;">最新のお気に入りスポット投稿</h4>
+    </div>
+    <div class="row">
+      <% @favorite_posts.each do |favorite_post| %>
+        <div class="col-4">
+          <%= image_tag favorite_post.get_favorite_post_image(100, 100) %></p>
+          <p>スポット名：<strong><%= link_to favorite_post.spot_name, favorite_post_path(favorite_post.id) %></strong>
+          <p>カテゴリ：<strong><%= favorite_post.category %></strong></p>
+          <p>本文：<strong><span> <%= favorite_post.body %></span></strong></p>
+          <p>投稿ユーザー：<strong><%= favorite_post.user.name %></strong></p>
+        </div>
+      <% end %>
+    </div>
   </div>
-<% end %>
+
+  <div class="bg-light">
+    <div class="row p-4 mt-4">
+      <h4 style="font-weight: bold;">最新のスケジュール投稿</h4>
+    </div>
+    <div class="row">
+      <% @schedule_posts.each do |schedule_post| %>
+        <div class="col-4">
+          <%= image_tag schedule_post.get_schedule_post_image(100, 100) %>
+          <p>旅のタイトル：<strong><%= link_to schedule_post.trip_title, schedule_post_path(schedule_post.id) %></strong></p>
+          <p>ユーザーネーム：<strong><%= schedule_post.user.name %></strong></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

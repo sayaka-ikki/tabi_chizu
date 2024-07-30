@@ -13,3 +13,16 @@
  *= require_tree .
  *= require_self
  */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.highlight {
+    padding: 20px;
+    background-color: #f8f9fa; /* Bootstrapのlightカラー */
+    border-radius: 5px; /* 角を少し丸くする */
+    margin-bottom: 20px; /* 下にスペースを設ける */
+  }

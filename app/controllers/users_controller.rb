@@ -3,6 +3,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @favorite_posts = @user.favorite_posts.order(created_at: :desc).page(params[:page]).per(6)
+    @schedule_posts = @user.schedule_posts.order(created_at: :desc).page(params[:page]).per(6)
   end
 
   def edit
