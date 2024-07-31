@@ -13,6 +13,11 @@
             <li class="nav-item col text-center" >
               <%= link_to 'お気に入りスポット投稿！', new_favorite_post_path, class: 'nav-link text-primary' %>
             </li>
+            <%# 改行しても結局２行目が文字数オーバーで中途半端な３行になっちゃったからやめた。
+            <li class="nav-item col text-center" >
+              <%= link_to ('お気に入り<br>スポット投稿！').html_safe, new_favorite_post_path, class: 'nav-link text-primary'
+            </li>
+            %>
             <li class="nav-item col text-center">
               <%= link_to 'お気に入りスポット一覧', favorite_posts_path, class: 'nav-link text-primary' %>
             </li>

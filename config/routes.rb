@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
-
   devise_for :admin, skip: [:registrations, :password], controllers: {
     sessions: 'admin/sessions'
   }
 
   namespace :admin do
     get 'dashboards', to: 'dashboards#index'
-    resources :users, only: [:destroy]
+    resources :users do
+      member do
+        patch :toggle_status
+      end
+    end
   end
 
   devise_for :users, controllers: { registrations: 'users/registrations' }
@@ -22,9 +25,4 @@ Rails.application.routes.draw do
     resources :favorite_post_comments, only: [:create,:destroy]
   end
   resources :schedule_posts, only:[:new, :create, :index, :show, :edit, :update, :destroy]
-
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-
-
 end
-

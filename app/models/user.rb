@@ -33,8 +33,8 @@ class User < ApplicationRecord
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
 
-#検索方法の分岐
-def self.looks(search, word)
+      #検索方法の分岐
+  def self.looks(search, word)
     if search == "perfect_match"
       @user = User.where("name LIKE?", "#{word}")
     elsif search == "forward_match"
@@ -46,6 +46,17 @@ def self.looks(search, word)
     else
       @user = User.all
     end
+  end
+
+  # カスタムバリデーション　ステータス退会の場合
+  validate :active_for_authentication?
+
+  def active_for_authentication?
+    super && !self.status
+  end
+
+  def inactive_message
+    self.status ? :account_inactive : super
   end
 
 end

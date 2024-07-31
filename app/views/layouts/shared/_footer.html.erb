@@ -1,9 +1,10 @@
-    <footer>
-      <div class="text-right">
-        <% unless user_signed_in? %>
-          <%= link_to admin_session_path do %>
-            <p>管理者<i class="fa-solid fa-lock"></i></p>
-          <% end %>
-        <% end %>
-      </div>
-    </footer>
+
+<footer>
+  <div class="text-right">
+    <% unless user_signed_in? || admin_signed_in? %>
+      <%= link_to admin_session_path do %>
+        <p>管理者<i class="fa-solid fa-lock"></i></p>
+      <% end %>
+    <% end %>
+  </div>
+</footer>
