@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(version: 2024_07_31_135215) do
     t.integer "longitude"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "schedule_id"
   end
 
   create_table "users", force: :cascade do |t|
