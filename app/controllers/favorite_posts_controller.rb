@@ -1,4 +1,7 @@
 class FavoritePostsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :correct_user, only: [:edit, :update, :destroy]
+
   def new
     @favorite_post = FavoritePost.new
   end
@@ -10,20 +13,17 @@ class FavoritePostsController < ApplicationController
     redirect_to favorite_post_path(@favorite_post.id)
   end
 
-
   def index
     @favorite_posts = FavoritePost.order(created_at: :desc).page(params[:page]).per(10)
   end
-
 
   def show
     @favorite_post = FavoritePost.find(params[:id])
     @favorite_post_comment = FavoritePostComment.new
   end
 
-
   def edit
-      @favorite_post = FavoritePost.find(params[:id])
+    @favorite_post = FavoritePost.find(params[:id])
   end
 
   def update
@@ -58,4 +58,8 @@ class FavoritePostsController < ApplicationController
     params.require(:favorite_post).permit(:spot_name, :category, :body, :favorite_post_image)
   end
 
+  def correct_user
+    @favorite_post = current_user.favorite_posts.find_by(id: params[:id])
+    redirect_to favorite_post_path(params[:id]) if @favorite_post.nil?
+  end
 end

@@ -1,4 +1,7 @@
 class SchedulePostsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :correct_user, only: [:edit, :update, :destroy]
+
   def new
     @schedule_post = SchedulePost.new
     @schedule_post.trip_itineraries.build
@@ -21,8 +24,8 @@ class SchedulePostsController < ApplicationController
   end
 
   def edit
-     @schedule_post = SchedulePost.find(params[:id])
-     @trip_itineraries = @schedule_post.trip_itineraries
+    @schedule_post = SchedulePost.find(params[:id])
+    @trip_itineraries = @schedule_post.trip_itineraries
   end
 
   def update
@@ -44,7 +47,11 @@ class SchedulePostsController < ApplicationController
   private
 
   def schedule_post_params
-    params.require(:schedule_post).permit(:trip_title, :latitude, :longitude, :inventory_list, :schedule_post_image, trip_itineraries_attributes: [:spot_name,:date_time,:body])
+    params.require(:schedule_post).permit(:trip_title, :latitude, :longitude, :inventory_list, :schedule_post_image, trip_itineraries_attributes: [:spot_name, :date_time, :body])
   end
 
+  def correct_user
+    @schedule_post = current_user.schedule_posts.find_by(id: params[:id])
+    redirect_to schedule_post_path(params[:id]) if @schedule_post.nil?
+  end
 end

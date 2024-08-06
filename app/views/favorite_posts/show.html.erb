@@ -6,13 +6,13 @@
         <div class="card-body">
           <div class="row">
             <div class="col-4">
-              <%= image_tag @favorite_post.get_favorite_post_image(200, 200), class: "mb-3" %>
+              <%= image_tag @favorite_post.get_favorite_post_image(150, 150), class: "mb-3" %>
             </div>
             <div class="col-8 d-flex flex-column align-items-normal">
               <label class="ml-3">スポット名：<%= @favorite_post.spot_name %></label>
               <label class="ml-3">カテゴリ：<%= @favorite_post.category %></label>
               <label class="ml-3">本文：<%= @favorite_post.body %></label>
-              <label class="ml-3">ユーザーネーム：<%= @favorite_post.user.name %></label>
+              <label class="ml-3">ユーザーネーム：<%= link_to @favorite_post.user.name, user_path(@favorite_post.user) %></label>
               <% if current_user == @favorite_post.user %>
                 <%= link_to "編集", edit_favorite_post_path(@favorite_post.id), class: "btn btn-primary mt-2" %>
                 <%= link_to "削除", favorite_post_path(@favorite_post), method: :delete, class: "btn btn-danger mt-2" %>
