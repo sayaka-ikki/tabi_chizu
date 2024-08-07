@@ -1,25 +1,58 @@
-<h1 class="text-center">全ユーザー一覧</h1>
-<div class="d-flex justify-content-center">
-  <table border="1">
-    <thead>
-      <tr>
-        <th>ユーザーID</th>
-        <th>ユーザー名</th>
-        <th>メールアドレス</th>
-        <th>ステータス</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @users.each do |user| %>
-        <tr>
-          <td><%= user.id %></td>
-          <td><%= link_to user.name, admin_user_path(user.id) %></td>
-          <td><%= user.email %></td>
-          <td><%= user.status ? '退会' : '有効' %></td>
+<div class="container">
+  <h1 class="text-center">ダッシュボード</h1>
+  <div class="row">
+    <!-- ユーザー一覧 -->
+    <div class="col-md-8">
+      <h2 class="text-center">全ユーザー一覧</h2>
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead class="thead-light">
+            <tr>
+              <th>ユーザーID</th>
+              <th>ユーザー名</th>
+              <th>メールアドレス</th>
+              <th>ステータス</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @users.each do |user| %>
+              <tr>
+                <td><%= user.id %></td>
+                <td><%= link_to user.name, admin_user_path(user.id) %></td>
+                <td><%= user.email %></td>
+                <td><%= user.status ? '退会' : '有効' %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
 
-        </tr>
-      <% end %>
-
-    </tbody>
-  </table>
+    <!-- コメント一覧 -->
+    <div class="col-md-4">
+      <h2 class="text-center">コメント一覧</h2>
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead class="thead-light">
+            <tr>
+              <th>ID</th>
+              <th>内容</th>
+              <th>ユーザー名</th>
+              <th>ステータス</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @favorite_post_comments.each do |comment| %>
+              <tr>
+                <td><%= comment.id %></td>
+                <td><%= link_to comment.favorite_post_comment_body, admin_favorite_post_comment_path(comment) %></td>
+                <td><%= comment.user.name %></td>
+                <td><%= comment.status ? '有効' : '無効' %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>

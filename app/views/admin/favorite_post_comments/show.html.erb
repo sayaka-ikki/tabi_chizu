@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <div class="col-6">
+      <h1 class="text-center mb-3">コメント詳細</h1>
+        <div class="row justify-content-center">
+          <div class="col">
+            <label>コメントID：<%= @favorite_post_comment.id %></label><br>
+            <label>内容：<%= @favorite_post_comment.favorite_post_comment_body %></label><br>
+            <label>ステータス：<%= @favorite_post_comment.status ? '有効' : '無効' %></label><br>
+            <%= link_to 'ステータスを切り替える', toggle_status_admin_favorite_post_comment_path(@favorite_post_comment), method: :patch, class: 'btn btn-primary' %>
+            <%= link_to '削除', admin_favorite_post_comment_path(@favorite_post_comment), method: :delete, class: 'btn btn-danger', data: { confirm: '本当に削除しますか？' } %>
+            <%= link_to '全コメント一覧へ戻る', admin_dashboards_path, class: 'btn btn-secondary' %>
+          </div>
+        </div>
+        <p class="text-center mb-3">下記のお気に入りスポット投稿に対してコメントされています</p>
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-4">
+                <%= image_tag @favorite_post_comment.favorite_post.get_favorite_post_image(150, 150), class: "mb-3" %>
+              </div>
+              <div class="col-8 d-flex flex-column align-items-normal">
+                <label class="ml-3">スポット名：<%= @favorite_post_comment.favorite_post.spot_name %></label>
+                <label class="ml-3">カテゴリ：<%= @favorite_post_comment.favorite_post.category %></label>
+                <label class="ml-3">本文：<%= @favorite_post_comment.favorite_post.body %></label>
+                <label class="ml-3">ユーザーネーム：<%= @favorite_post_comment.favorite_post.user.name %></label>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

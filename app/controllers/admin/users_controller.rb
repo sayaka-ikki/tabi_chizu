@@ -16,7 +16,7 @@ class Admin::UsersController < ApplicationController
     @user.update(status: !@user.status)
 
     if @user.status
-      flash[:notice] = "退会処理を実行いたしました"
+      flash[:notice] = "退会処理を実行しました"
     else
       flash[:notice] = "有効にしました"
     end

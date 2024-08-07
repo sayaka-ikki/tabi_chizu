@@ -9,20 +9,13 @@
       <label>ユーザーID：<%= @user.id %></label><br>
       <label>ユーザー名：<%= @user.name %></label><br>
       <label>メールアドレス：<%= @user.email %></label><br>
-
-      <% if @user.status %>
-        <label>ステータス：退会</label><br>
-        <%= link_to 'ステータスを有効にする', toggle_status_admin_user_path(@user), method: :patch, class: 'btn btn-primary' %>
-      <% else %>
-        <label>ステータス：有効</label><br>
-        <%= link_to 'ステータスを退会にする', toggle_status_admin_user_path(@user), method: :patch, class: 'btn btn-danger' %>
-      <% end %>
+      <label>ステータス：<%= @user.status ? '退会' : '有効' %></label><br>
+      <%= link_to 'ステータスを切り替える', toggle_status_admin_user_path(@user), method: :patch, class: 'btn btn-primary' %>
       <div>
-        <td><%= link_to 'このユーザーを削除', admin_user_path(@user), method: :delete, class: 'btn btn-danger', data: { confirm: '本当に削除しますか？' } %></td>
+        <%= link_to 'このユーザーを削除', admin_user_path(@user), method: :delete, class: 'btn btn-danger', data: { confirm: '本当に削除しますか？' } %>
       </div>
-
       <div>
-        <%= link_to '全ユーザー一覧へ',admin_dashboards_path %>
+        <%= link_to '全ユーザー一覧へ戻る', admin_dashboards_path, class: 'btn btn-secondary' %>
       </div>
     </div>
   </div>

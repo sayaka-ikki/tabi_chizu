@@ -21,8 +21,8 @@
           </div>
           <div class="card">
             <div class="card-body">
-              <label class="ml-3">コメント件数：<%= @favorite_post.favorite_post_comments.count %></label>
-              <% @favorite_post.favorite_post_comments.each do |favorite_post_comment| %>
+              <label class="ml-3">コメント件数：<%= @favorite_post.favorite_post_comments.active.count %></label>
+              <% @favorite_post_comments.each do |favorite_post_comment| %>
                 <div class="card mt-2">
                   <div class="card-body">
                     <div class="row">

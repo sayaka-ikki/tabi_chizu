@@ -10,6 +10,11 @@ Rails.application.routes.draw do
         patch :toggle_status
       end
     end
+    resources :favorite_post_comments, only: [:show, :destroy] do
+      member do
+        patch :toggle_status
+      end
+    end
   end
 
   devise_for :users, controllers: { registrations: 'users/registrations' }

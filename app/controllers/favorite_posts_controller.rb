@@ -9,8 +9,11 @@ class FavoritePostsController < ApplicationController
   def create
     @favorite_post = FavoritePost.new(favorite_post_params)
     @favorite_post.user_id = current_user.id
-    @favorite_post.save
-    redirect_to favorite_post_path(@favorite_post.id)
+    if @favorite_post.save
+      redirect_to favorite_post_path(@favorite_post.id)
+    else
+      render :new
+    end
   end
 
   def index
@@ -20,6 +23,7 @@ class FavoritePostsController < ApplicationController
   def show
     @favorite_post = FavoritePost.find(params[:id])
     @favorite_post_comment = FavoritePostComment.new
+    @favorite_post_comments = @favorite_post.favorite_post_comments.active
   end
 
   def edit
@@ -31,6 +35,8 @@ class FavoritePostsController < ApplicationController
     if @favorite_post.update(favorite_post_params)
       flash[:notice] = "お気に入りスポットの編集が完了しました！"
       redirect_to favorite_post_path(@favorite_post.id)
+    else
+      render :edit
     end
   end
 
