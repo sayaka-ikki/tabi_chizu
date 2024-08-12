@@ -5,3 +5,29 @@ ja:
     facility: "施設"
     nature: "自然"
     others: "その他"
+  devise:
+    confirmations:
+      confirmed: "アカウントが確認されました。"
+    failure:
+      already_authenticated: "すでにログインしています。"
+      inactive: "アカウントが無効です。"
+      invalid: "メールアドレスまたはパスワードが正しくありません。"
+      locked: "アカウントがロックされています。"
+      not_found_in_database: "メールアドレスまたはパスワードが正しくありません。"
+      timeout: "セッションがタイムアウトしました。再度ログインしてください。"
+      unauthenticated: "ログインしてください。"
+      unconfirmed: "アカウントが確認されていません。"
+    passwords:
+      send_instructions: "パスワード再設定の案内を送信しました。"
+      updated: "パスワードが更新されました。"
+      updated_not_active: "パスワードが更新されましたが、アカウントは有効ではありません。"
+    registrations:
+      signed_up: "アカウント登録が完了しました。"
+      updated: "アカウント情報が更新されました。"
+      destroyed: "アカウントが削除されました。"
+    sessions:
+      signed_in: "ログインしました。"
+      signed_out: "ログアウトしました。"
+    unlocks:
+      send_instructions: "アカウントロック解除の案内を送信しました。"
+      unlocked: "アカウントのロックが解除されました。"
