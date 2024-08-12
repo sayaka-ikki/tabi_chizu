@@ -10,7 +10,7 @@
             </div>
             <div class="col-8 d-flex flex-column align-items-normal">
               <label class="ml-3">スポット名：<%= @favorite_post.spot_name %></label>
-              <label class="ml-3">カテゴリ：<%= t("categories.#{@favorite_post.category}") %></label>
+              <label class="ml-3">カテゴリ：<%= I18n.t("categories.#{@favorite_post.category}") %></label>
               <label class="ml-3">本文：<%= @favorite_post.body %></label>
               <label class="ml-3">ユーザーネーム：<%= link_to @favorite_post.user.name, user_path(@favorite_post.user) %></label>
               <% if current_user == @favorite_post.user %>

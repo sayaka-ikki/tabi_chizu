@@ -58,6 +58,11 @@ class FavoritePostsController < ApplicationController
     end
   end
 
+  def category
+    @category = params[:category]
+    @favorite_posts = FavoritePost.where(category: @category).page(params[:page]).per(10)
+  end
+
   private
 
   def favorite_post_params

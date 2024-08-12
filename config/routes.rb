@@ -28,6 +28,9 @@ Rails.application.routes.draw do
   resources :users, only: [:index,:edit, :show, :create, :update]
   resources :favorite_posts, only:[:new, :create, :index, :show, :edit, :update, :destroy] do
     resources :favorite_post_comments, only: [:create,:destroy]
+    collection do
+      get 'category/:category', to: 'favorite_posts#category', as: :category
+    end
   end
   resources :schedule_posts, only:[:new, :create, :index, :show, :edit, :update, :destroy]
 end

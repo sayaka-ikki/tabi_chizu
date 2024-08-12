@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-8 text-center">
-      <h1>スポット投稿一覧</h1>
+      <h1><%= I18n.t("categories.#{@category}") %>カテゴリの一覧</h1>
 
       <div class="mb-4">
         <% I18n.t('categories').each do |key, value| %>

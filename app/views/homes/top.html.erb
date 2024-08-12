@@ -28,11 +28,11 @@
     <div class="row">
       <% @favorite_posts.each do |favorite_post| %>
         <div class="col-4">
-          <%= image_tag favorite_post.get_favorite_post_image(100, 100) %></p>
-          <p>スポット名：<strong><%= link_to favorite_post.spot_name, favorite_post_path(favorite_post.id) %></strong>
-          <p>カテゴリ：<strong><%= favorite_post.category %></strong></p>
-          <p>本文：<strong><span> <%= favorite_post.body %></span></strong></p>
-          <p>投稿ユーザー：<strong><%= favorite_post.user.name %></strong></p>
+          <%= image_tag favorite_post.get_favorite_post_image(100, 100) %>
+          <label class="d-block text-left">スポット名：<strong><%= link_to favorite_post.spot_name, favorite_post_path(favorite_post.id) %></strong></label>
+          <label class="d-block text-left">カテゴリ：<strong><%= I18n.t("categories.#{favorite_post.category}") %></strong></label>
+          <label class="d-block text-left">本文：<strong><span> <%= favorite_post.body %></span></strong></label>
+          <label class="d-block text-left">投稿ユーザー：<strong><%= favorite_post.user.name %></strong></label>
         </div>
       <% end %>
     </div>
@@ -46,14 +46,14 @@
       <% @schedule_posts.each do |schedule_post| %>
         <div class="col-4">
           <%= image_tag schedule_post.get_schedule_post_image(100, 100) %>
-          <p>旅のタイトル：<strong><%= link_to schedule_post.trip_title, schedule_post_path(schedule_post.id) %></strong></p>
+          <label class="d-block text-left">旅のタイトル：<strong><%= link_to schedule_post.trip_title, schedule_post_path(schedule_post.id) %></strong></label>
           <div>
             <% schedule_post.trip_itineraries.each do |itinerary| %>
-            <p>訪問先名：<%= itinerary.spot_name %></p>
-            <p>メモ：<%= itinerary.body %></p>
+            <label class="d-block text-left">訪問先名：<%= itinerary.spot_name %></label>
+            <label class="d-block text-left">メモ：<%= itinerary.body %></label>
+            <label class="d-block text-left">ユーザーネーム：<strong><%= schedule_post.user.name %></strong></label>
             <% end %>
           </div>
-          <p>ユーザーネーム：<strong><%= schedule_post.user.name %></strong></p>
         </div>
       <% end %>
     </div>
