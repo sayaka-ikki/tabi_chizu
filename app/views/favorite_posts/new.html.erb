@@ -11,7 +11,7 @@
         </div>
         <div class="form-group">
           <%= f.label :category, "カテゴリ" %>
-          <%= f.text_field :category, class: "form-control" %>
+          <%= f.select :category, FavoritePost.categories.map { |key, value| [I18n.t("categories.#{key}"), key] }, {}, class: "form-control" %>
         </div>
         <div class="form-group">
           <%= f.label :body, "本文" %>

@@ -21,5 +21,8 @@ module Kari
     # config.eager_load_paths << Rails.root.join("extras")
     config.autoload_paths += %W(#{config.root}/lib)
 
+    # デフォルトロケールを日本語に設定
+    config.i18n.default_locale = :ja
+
   end
 end
