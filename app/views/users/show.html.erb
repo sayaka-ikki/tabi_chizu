@@ -20,12 +20,12 @@
         <% @favorite_posts.each do |favorite_post| %>
           <div class="col-6">
             <div class="card mb-4">
-              <div class="card-body">
+              <div class="card-body" style="word-wrap: break-word;">
                 <%= image_tag favorite_post.get_favorite_post_image(100, 100) %>
-                <p>スポット名：<strong><%= link_to favorite_post.spot_name, favorite_post_path(favorite_post.id) %></strong></p>
-                <p>カテゴリ：<strong><%= favorite_post.category %></strong></p>
-                <p>本文：<strong><span> <%= favorite_post.body %></span></strong></p>
-                <p>投稿ユーザー：<strong><%= favorite_post.user.name %></strong></p>
+                <label class="d-block text-left">スポット名：<strong><%= link_to favorite_post.spot_name, favorite_post_path(favorite_post.id) %></strong></label>
+                <label class="d-block text-left">カテゴリ：<strong><%= I18n.t("categories.#{favorite_post.category}") %></strong></label>
+                <label class="d-block text-left">本文：<strong><span> <%= favorite_post.body %></span></strong></label>
+                <label class="d-block text-left">投稿ユーザー：<strong><%= favorite_post.user.name %></strong></label>
                 <p><%= link_to "#{favorite_post.favorite_post_comments.count} コメント", favorite_post_path(favorite_post.id) %></p>
               </div>
             </div>
