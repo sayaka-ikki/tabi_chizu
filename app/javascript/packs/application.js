@@ -8,10 +8,11 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
-import "jquery";
+require("jquery");
 import "popper.js";
 import "bootstrap";
 import "../stylesheets/application";
+require("@nathanvda/cocoon");
 
 Rails.start()
 Turbolinks.start()

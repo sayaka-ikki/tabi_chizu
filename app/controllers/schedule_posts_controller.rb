@@ -47,7 +47,7 @@ class SchedulePostsController < ApplicationController
   private
 
   def schedule_post_params
-    params.require(:schedule_post).permit(:trip_title, :latitude, :longitude, :inventory_list, :schedule_post_image, trip_itineraries_attributes: [:spot_name, :date_time, :body])
+    params.require(:schedule_post).permit(:trip_title, :latitude, :longitude, :inventory_list, :schedule_post_image, trip_itineraries_attributes: [:id, :spot_name, :date_time, :body, :latitude, :longitude, :_destroy])
   end
 
   def correct_user

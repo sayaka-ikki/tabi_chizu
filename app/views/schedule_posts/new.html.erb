@@ -27,32 +27,14 @@
           <%= f.text_area :inventory_list, class: "form-control" %>
         </div>
 
-        <%= f.fields_for :trip_itineraries do |trip_itinerary_form| %>
-        <div class="card">
-          <div class="card-body">
-            <div class="form-group">
-              <%= trip_itinerary_form.label :spot_name, "訪問先名" %>
-              <%= trip_itinerary_form.text_field :spot_name, class: "form-control" %>
-            </div>
-            <div class="form-group">
-              <%= trip_itinerary_form.label :date_time, "日時" %>
-              <%= trip_itinerary_form.text_field :date_time, class: "form-control" %>
-            </div>
-            <div class="form-group">
-              <%= trip_itinerary_form.label :body, "メモ" %>
-              <%= trip_itinerary_form.text_area :body, class: "form-control" %>
-            </div>
-            <div class="form-group">
-              <%= trip_itinerary_form.label :latitude, "緯度" %>
-              <%= trip_itinerary_form.text_field :latitude, class: "form-control" %>
-            </div>
-            <div class="form-group">
-              <%= trip_itinerary_form.label :longitude, "経度" %>
-              <%= trip_itinerary_form.text_field :longitude, class: "form-control" %>
-            </div>
+        <div id="trip-itineraries">
+          <%= f.fields_for :trip_itineraries do |trip_itinerary_form| %>
+            <%= render 'schedule_posts/trip_itinerary', f: trip_itinerary_form %>
+          <% end %>
+          <div class="links">
+            <%= link_to_add_association 'Add Trip Itinerary', f, :trip_itineraries, partial: 'schedule_posts/trip_itinerary' %>
           </div>
         </div>
-        <% end %>
 
         <%= f.submit '投稿', class: "btn btn-primary" %>
       <% end %>
