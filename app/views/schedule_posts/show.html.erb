@@ -24,11 +24,32 @@
             <div class="card mt-2">
               <div class="card-body">
                 <label class="ml-3 d-block">訪問先名：<%= itinerary.spot_name %></label>
+                <label class="ml-3 d-block">住所：<%= itinerary.address %></label>
                 <label class="ml-3 d-block">日時：<%= itinerary.date_time %></label>
                 <label class="ml-3 d-block">メモ：<%= itinerary.body %></label>
               </div>
             </div>
           <% end %>
+          <!-- Googleマップ表示部分 -->
+          <div id="map" style="height: 500px;"></div>
+          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWnWz1b3lao37he41Pou6rn7z4JoGLDVM&callback=initMap" async defer></script>
+          <script>
+            function initMap() {
+              var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 10,
+                center: {lat: 35.6895, lng: 139.6917} // 東京の中心座標
+              });
+
+              var markers = <%= raw @trip_itineraries.to_json(only: [:latitude, :longitude]) %>;
+
+              markers.forEach(function(marker) {
+                new google.maps.Marker({
+                  position: {lat: marker.latitude, lng: marker.longitude},
+                  map: map
+                });
+              });
+            }
+          </script>
         </div>
       </div>
     </div>

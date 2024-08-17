@@ -10,8 +10,11 @@ class SchedulePostsController < ApplicationController
   def create
     @schedule_post = SchedulePost.new(schedule_post_params)
     @schedule_post.user_id = current_user.id
-    @schedule_post.save
-    redirect_to schedule_post_path(@schedule_post.id)
+    if @schedule_post.save
+      redirect_to schedule_post_path(@schedule_post.id)
+    else
+      render :new
+    end
   end
 
   def index
@@ -33,6 +36,8 @@ class SchedulePostsController < ApplicationController
     if @schedule_post.update(schedule_post_params)
       flash[:notice] = "スケジュールの編集が完了しました！"
       redirect_to schedule_post_path(@schedule_post.id)
+    else
+      render :edit
     end
   end
 
@@ -47,7 +52,7 @@ class SchedulePostsController < ApplicationController
   private
 
   def schedule_post_params
-    params.require(:schedule_post).permit(:trip_title, :latitude, :longitude, :inventory_list, :schedule_post_image, trip_itineraries_attributes: [:id, :spot_name, :date_time, :body, :latitude, :longitude, :_destroy])
+    params.require(:schedule_post).permit(:trip_title, :latitude, :longitude, :inventory_list, :schedule_post_image, trip_itineraries_attributes: [:id, :spot_name, :date_time, :body, :address, :_destroy])
   end
 
   def correct_user

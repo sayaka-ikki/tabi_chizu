@@ -51,16 +51,12 @@
                   <%= trip_itinerary_form.text_field :date_time, id:"inputDateTime", class: "form-control" %>
                 </div>
                 <div class="form-group">
+                  <%= trip_itinerary_form.label :address, "住所", for: "inputAddress" %>
+                  <%= trip_itinerary_form.text_field :address, id:"inputAddress", class: "form-control" %>
+                </div>
+                <div class="form-group">
                   <%= trip_itinerary_form.label :body, "メモ", for: "inputBody" %>
                   <%= trip_itinerary_form.text_area :body, id:"inputBody", class: "form-control" %>
-                </div>
-                <div class="form-group">
-                  <%= trip_itinerary_form.label :latitude, "緯度", for: "inputLatitude" %>
-                  <%= trip_itinerary_form.text_field :latitude, id:"inputLatitude", class: "form-control" %>
-                </div>
-                <div class="form-group">
-                  <%= trip_itinerary_form.label :longitude, "経度", for: "inputLongitude" %>
-                  <%= trip_itinerary_form.text_field :longitude, id:"inputLongitude", class: "form-control" %>
                 </div>
                 <%= link_to_remove_association "Remove", trip_itinerary_form, class: "btn btn-danger" %>
               </div>
