@@ -29,6 +29,7 @@
           <%= f.label :inventory_list, "持ち物リスト", for: "inputInventoryList" %>
           <%= f.text_area :inventory_list, autofocus: true, id:"inputInventoryList", placeholder:"持ち物リスト", class: "form-control" %>
         </div>
+        <% if false %>
         <div class="form-group">
           <%= f.label :latitude, "緯度", for: "inputLatitude" %>
           <%= f.text_field :latitude, autofocus: true, id:"inputLatitude", placeholder:"緯度", class: "form-control" %>
@@ -37,6 +38,7 @@
           <%= f.label :longitude, "経度", for: "inputLongitude" %>
           <%= f.text_field :longitude, autofocus: true, id:"inputLongitude", placeholder:"経度", class: "form-control" %>
         </div>
+        <% end %>
 
         <div id="trip-itineraries">
           <%= f.fields_for :trip_itineraries do |trip_itinerary_form| %>

@@ -14,6 +14,7 @@
           <%= f.label :schedule_post_image, "画像" %>
           <%= f.file_field :schedule_post_image, accept: "image/*", class: "form-control-file" %>
         </div>
+        <%if false %> <%# コメントアウト%>
         <div class="form-group">
           <%= f.label :latitude, "緯度" %>
           <%= f.text_field :latitude, class: "form-control" %>
@@ -22,9 +23,14 @@
           <%= f.label :longitude, "経度" %>
           <%= f.text_field :longitude, class: "form-control" %>
         </div>
+        <% end %>
         <div class="form-group">
           <%= f.label :inventory_list, "持ち物リスト" %>
           <%= f.text_area :inventory_list, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :address, "住所" %>
+          <%= f.text_area :address, class: "form-control" %>
         </div>
 
         <div id="trip-itineraries">

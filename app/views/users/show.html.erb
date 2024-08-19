@@ -52,9 +52,13 @@
               <div class="card-body">
                 <%= image_tag schedule_post.get_schedule_post_image(100, 100) %>
                 <p>旅のタイトル：<strong><%= link_to schedule_post.trip_title, schedule_post_path(schedule_post.id) %></strong></p>
-                <p>緯度：<strong><%= schedule_post.latitude %></strong></p>
-                <p>経度：<strong><%= schedule_post.longitude %></strong></p>
-
+                <% if false %>
+                  <p>緯度：<strong><%= schedule_post.latitude %></strong></p>
+                  <p>経度：<strong><%= schedule_post.longitude %></strong></p>
+                <% end %>
+                <p>持ち物リスト：<strong><span> <%= schedule_post.inventory_list %></span></strong></p>
+                <p>ユーザーネーム：<strong><%= schedule_post.user.name %></strong></p>
+                
                 <% schedule_post.trip_itineraries.each do |itinerary| %>
                   <div class="card mb-3">
                     <div class="card-body">
@@ -64,10 +68,6 @@
                     </div>
                   </div>
                 <% end %>
-
-
-                <p>持ち物リスト：<strong><span> <%= schedule_post.inventory_list %></span></strong></p>
-                <p>ユーザーネーム：<strong><%= schedule_post.user.name %></strong></p>
               </div>
             </div>
           </div>

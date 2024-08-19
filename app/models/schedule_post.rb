@@ -5,6 +5,9 @@ class SchedulePost < ApplicationRecord
 
   has_one_attached :schedule_post_image
 
+  geocoded_by :address
+  after_validation :geocode, if: ->(obj){ obj.address.present? }
+
   def get_schedule_post_image(width, height)
     unless schedule_post_image.attached?
       file_path = Rails.root.join('app/assets/images/post_no_image.jpg')

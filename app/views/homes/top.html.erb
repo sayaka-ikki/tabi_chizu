@@ -6,20 +6,19 @@
     <h2>～旅人のための地図作り～</h2>
   </div>
   <div class="container">
-  <div class="row justify-content-center mb-5">
-    <div class="col-md-9">
-      <p>..たび＆ちずでできること..</p>
-      <p>①お気に入りスポットを投稿することができます。行ってみたい場所を見つけたら投稿しておこう！</br>
-        ②旅行のスケジュールを作成することができます。</br>
-        ③全ユーザーが投稿したお気に入りスポットを検索することができるため、スケジュール作成に役立ちます。</br>
-        ④スケジュール作成時には訪問先を複数個登録できるため時間管理もラクラクです。</br>
-        ⑤訪問先を地図上で確認できるため、それぞれの訪問先の位置関係が一目瞭然！効率のいいスケジュール作成に役立ちます。</br>
-        ⑥スケジュールには持ち物リストを保存できるため、忘れ物を防止します。</p>
-      <p>さあ、みんなもお気に入りスポットを投稿してみよう！</p>
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-9">
+        <p>..たび＆ちずでできること..</p>
+        <p>①お気に入りスポットを投稿することができます。行ってみたい場所を見つけたら投稿しておこう！</br>
+          ②旅行のスケジュールを作成することができます。</br>
+          ③全ユーザーが投稿したお気に入りスポットを検索することができるため、スケジュール作成に役立ちます。</br>
+          ④スケジュール作成時には訪問先を複数個登録できるため時間管理もラクラクです。</br>
+          ⑤訪問先を地図上で確認できるため、それぞれの訪問先の位置関係が一目瞭然！効率のいいスケジュール作成に役立ちます。</br>
+          ⑥スケジュールには持ち物リストを保存できるため、忘れ物を防止します。</p>
+        <p>さあ、みんなもお気に入りスポットを投稿してみよう！</p>
+      </div>
     </div>
   </div>
-</div>
-
 
   <div class="bg-light">
     <div class="row p-4">
@@ -44,14 +43,16 @@
     </div>
     <div class="row">
       <% @schedule_posts.each do |schedule_post| %>
-        <div class="col-4">
+        <div class="col-4 mb-4">
           <%= image_tag schedule_post.get_schedule_post_image(100, 100) %>
           <label class="d-block text-left">旅のタイトル：<strong><%= link_to schedule_post.trip_title, schedule_post_path(schedule_post.id) %></strong></label>
+          <label class="d-block text-left">ユーザーネーム：<strong><%= schedule_post.user.name %></strong></label>
           <div>
             <% schedule_post.trip_itineraries.each do |itinerary| %>
-            <label class="d-block text-left">訪問先名：<%= itinerary.spot_name %></label>
-            <label class="d-block text-left">メモ：<%= itinerary.body %></label>
-            <label class="d-block text-left">ユーザーネーム：<strong><%= schedule_post.user.name %></strong></label>
+              <div class="mb-3" style="padding-left: 1em;">
+                <label class="d-block text-left">訪問先名：<%= itinerary.spot_name %></label>
+                <label class="d-block text-left">メモ：<%= itinerary.body %></label>
+              </div>
             <% end %>
           </div>
         </div>

@@ -13,7 +13,9 @@ import "popper.js";
 import "bootstrap";
 import "../stylesheets/application";
 require("@nathanvda/cocoon");
+//import "./map";
+
 
 Rails.start()
-Turbolinks.start()
+//Turbolinks.start()
 ActiveStorage.start()

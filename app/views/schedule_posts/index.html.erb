@@ -12,8 +12,12 @@
             <div class="col-md-8">
               <div class="card-body" style="word-wrap: break-word;">
                 <label class="d-block text-left">旅のタイトル：<strong><%= link_to schedule_post.trip_title, schedule_post_path(schedule_post.id) %></strong></label>
+                <% if false %>
                 <label class="d-block text-left">緯度：<strong><%= schedule_post.latitude %></strong></label>
                 <label class="d-block text-left">経度：<strong><%= schedule_post.longitude %></strong></label>
+                <% end %>
+                <label class="d-block text-left">持ち物リスト：<strong><span> <%= schedule_post.inventory_list %></span></strong></label>
+                <label class="d-block text-left">ユーザーネーム：<strong><%= schedule_post.user.name %></strong></label>
 
                 <% schedule_post.trip_itineraries.each do |itinerary| %>
                   <div class="card mt-3">
@@ -25,8 +29,6 @@
                   </div>
                 <% end %>
 
-                <label class="d-block text-left">持ち物リスト：<strong><span> <%= schedule_post.inventory_list %></span></strong></label>
-                <label class="d-block text-left">ユーザーネーム：<strong><%= schedule_post.user.name %></strong></label>
               </div>
             </div>
           </div>
