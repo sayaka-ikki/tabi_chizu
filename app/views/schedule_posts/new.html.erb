@@ -25,14 +25,13 @@
         </div>
         <% end %>
         <div class="form-group">
-          <%= f.label :inventory_list, "持ち物リスト" %>
-          <%= f.text_area :inventory_list, class: "form-control" %>
-        </div>
-        <div class="form-group">
           <%= f.label :address, "住所" %>
           <%= f.text_area :address, class: "form-control" %>
         </div>
-
+        <div class="form-group">
+          <%= f.label :inventory_list, "持ち物リスト" %>
+          <%= f.text_area :inventory_list, class: "form-control" %>
+        </div>
         <div id="trip-itineraries">
           <%= f.fields_for :trip_itineraries do |trip_itinerary_form| %>
             <%= render 'schedule_posts/trip_itinerary', f: trip_itinerary_form %>

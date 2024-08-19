@@ -10,6 +10,7 @@
             </div>
             <div class="col-8 d-flex flex-column align-items-normal">
               <label class="ml-3">旅のタイトル：<%= @schedule_post.trip_title %></label>
+              <label class="ml-3">住所：<%= @schedule_post.address %></label>
               <label class="ml-3">持ち物リスト：<%= @schedule_post.inventory_list %></label>
               <label class="ml-3">ユーザーネーム：<%= link_to @schedule_post.user.name, user_path(@schedule_post.user) %></label>
               <% if current_user == @schedule_post.user %>
