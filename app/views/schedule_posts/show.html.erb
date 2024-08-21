@@ -45,7 +45,7 @@
 
               // マーカーを追加
               new google.maps.Marker({
-                position: {lat: <%= @schedule_post.latitude %>, lng: <%= @schedule_post.longitude %>},
+                position: {lat: <%= @schedule_post.latitude || 35.681236 %>, lng: <%= @schedule_post.longitude || 139.767125 %>},
                 map: map,
                 title: '<%= j @schedule_post.trip_title %>'
               });
